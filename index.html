@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tutor Collective</title>
+    <!-- Google Fonts for Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Oswald', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8F8F2;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+        header {
+            background-color: #0d1b2a;
+            color: #F8F8F2;
+            padding: 20px 20px;
+            display: flex;
+            height: 120px;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #0d1b2a;
+        }
+        .logo-container {
+            height: 100px;
+            background-color:#0d1b2a;
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logo-container:hover {
+            transform: scale(1.1);
+        }
+        .logo-img {
+            margin-right: 15px;
+        }
+        .logo-img img {
+            width: 140px;
+            height: auto;
+        }
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #F8F8F2;
+        }
+        .logo-line {
+            display: block;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+        nav a {
+            margin: 0;
+            padding: 0 20px;
+            text-decoration: none;
+            color: #708090;
+            font-weight: 500;
+            font-size: 20px;
+            text-align: center;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s, transform 0.3s;
+            position: relative;
+        }
+        nav a:hover {
+            border-bottom: 2px solid #0F705A;
+            transform: scale(1.1);
+        }
+        nav a:not(:last-child)::after {
+            content: "|";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ccc;
+        }
+        .icon_image{
+            position: absolute;
+            top: 15%;    /* Adjusts the top position */
+            left: 20%;   /* Adjusts the left position */
+            height: 20px;
+            width: auto;
+        }
+        .section-intro {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0px;
+            background-color: #F8F8F2;
+            margin: 0px 0;
+            font-size: 18px;
+            height: 550px; /* Set height to ensure both text and image are aligned */
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+        .section-tutors {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0px;
+            background-color: #F8F8F2;
+            margin: 0px 0;
+            font-size: 18px;
+            height: 1300px; /* Set height to ensure both text and image are aligned */
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+        .section-blue {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0px;
+            background-color: #778da9;
+            margin: 0px 0;
+            font-size: 18px;
+            height: 750px; /* Set height to ensure both text and image are aligned */
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+        .section-contact {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px;
+            background-color: #778da9;
+            margin: 20px 0;
+            height: 800px;
+            font-size: 18px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .text-box {
+            background-color: #F8F8F2;
+            color: #1B263B;
+            padding: 10px;
+            max-width: 550px;
+            text-align: left;
+            font-family: 'Anton', sans-serif;
+            border-radius: 10px;
+            margin-left: 60px;
+        }
+        .text-box-alt-title{
+            background-color: #778da9;
+            color: #1b263b;
+            position: absolute;
+            padding: 10px;
+            left: 100px;
+            top: 6%;
+            text-align: center;
+            font-family: 'Anton', sans-serif;
+            border-radius: 10px;
+        }
+        .text-box-alt-subtitle-1{
+            background-color: #778da9;
+            color: #F8F8F2;
+            position: absolute;
+            left: 7%;
+            top: 24%;
+            text-align: center;
+            font-family: 'Anton', sans-serif;
+        }
+        .text-box-alt-subtitle-2{
+            background-color: #778da9;
+            color: #F8F8F2;
+            position: absolute;
+            left: 42%;
+            top: 24%;
+            text-align: center;
+            font-family: 'Anton', sans-serif;
+        }
+        .text-box-alt-subtitle-3{
+            background-color: #778da9;
+            color: #F8F8F2;
+            position: absolute;
+            left: 70%;
+            top: 24%;
+            text-align: center;
+            font-family: 'Anton', sans-serif;
+        }
+        .text-box-commitment{
+            background-color: #778da9;
+            color: #F8F8F2;
+            position: absolute;
+            padding: 5px;
+            left: 4.5%;
+            top: 34%;
+            max-width: 410px;
+            text-align: justify;
+            font-family: 'Inter', sans-serif;
+        }
+        .text-box-process{
+            background-color: #778da9;
+            color: #F8F8F2;
+            position: absolute;
+            padding: 5px;
+            left: 36.5%;
+            top: 34%;
+            max-width: 400px;
+            text-align: justify;
+            font-family: 'Inter', sans-serif;
+        }
+        .text-box-unique{
+            background-color: #778da9;
+            color: #F8F8F2;
+            position: absolute;
+            padding: 5px;
+            left: 67.7%;
+            top: 34%;
+            max-width: 400px;
+            text-align: justify;
+            font-family: 'Inter', sans-serif;
+        }
+        .text-box-tutors{
+            background-color: #F8F8F2;
+            color: #415a77;
+            position: absolute;
+            left: 5%;
+            top: 1.65%;
+            max-width: 800px;
+            padding: 0px;
+            text-align: justify;
+            font-family: 'Inter', sans-serif;
+        }
+        .text-box-tutors h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .text-box-unique h1 {
+            font-size: 19px;
+            font-weight: 150;
+            margin: 0;
+        }
+        .text-box-process h1 {
+            font-size: 19px;
+            font-weight: 150;
+            margin: 0;
+        }
+        .text-box-commitment h1 {
+            font-size: 19px;
+            font-weight: 150;
+            margin: 0;
+        }
+        .text-box-alt-subtitle-3 h1 {
+            font-size: 40px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .text-box-alt-subtitle-2 h1 {
+            font-size: 40px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .text-box-alt-subtitle-1 h1 {
+            font-size: 40px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .text-box-alt-title h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .text-box h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .image-container {
+            height: 550px; /* Match the height of the section */
+            display: flex;
+            align-items: center;
+        }
+        .image-container img {
+            height: 100%; /* Ensures image height matches the section height */
+            width: auto; /* Maintain aspect ratio */
+            margin-right: 0; /* Remove right margin to align it to the edge */
+        }
+        .relative-section {
+            position: relative; /* Establishes the positioning context */
+            height: 70px; /* Adjust the height as needed */
+        }
+        .absolute-image img{
+            position: absolute;
+            top: 15%;    /* Adjusts the top position */
+            left: 18%;   /* Adjusts the left position */
+            height: 120px;
+            width: auto;
+            transform: translate(-50%, -50%); /* Centers the image */
+        }
+        .absolute-image-2 img{
+            position: absolute;
+            top: 15%;    /* Adjusts the top position */
+            left: 50%;   /* Adjusts the left position */
+            height: 120px;
+            width: auto;
+            transform: translate(-50%, -50%); /* Centers the image */
+        }
+        .absolute-image-3 img{
+            position: absolute;
+            top: 15%;    /* Adjusts the top position */
+            left: 82%;   /* Adjusts the left position */
+            height: 120px;
+            width: auto;
+            transform: translate(-50%, -50%); /* Centers the image */
+        }
+        .tutor-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        .tutor-card {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .tutor-card img {
+            width: 100%;
+            height: 500px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .tutor-card:hover img {
+            transform: scale(1.1);
+        }
+        .tutor-info {
+            background-color: #778da9;
+            color: #0d1b2a;
+            padding: 10px;
+            font-size: 18px;
+            position: absolute;
+            bottom: 0;
+            left: -10px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .tutor-card:hover .tutor-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .text-box-contact-title{
+            position: relative;
+            background-color: #778DA9;
+            color: #0d1b2a;
+            padding: 10px;
+            max-width: 500px;
+            text-align: justify;
+            font-family: 'Anton', sans-serif;
+            border-radius: 10px;
+            bottom:350px;
+            left:90px;
+        }
+        .text-box-contact-title h1 {
+            color: #0d1b2a;
+            font-size: 50px;
+            font-weight: 600;
+            margin: 0;
+        }
+        .text-box-contact-text{
+            position: relative;
+            background-color: #778DA9;
+            color: #0d1b2a;
+            padding: 10px;
+            max-width: 550px;
+            text-align: justify;
+            font-family: 'Anton', sans-serif;
+            border-radius: 10px;
+            bottom:100px;
+            right:770px;
+        }
+        .text-box-contact-text h1 {
+            color: #0d1b2a;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+        .contact-form-container {
+            position:absolute;
+            background-color: #0d1b2a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px #0d1b2a;
+            height: 700px;
+            max-width: 600px;
+            width: 100%;
+            margin: auto;
+            top:50px;
+            right:100px;
+        }
+        .contact-form-container h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-align: center;
+            color: #F8F8F2;
+        }
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #F8F8F2;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            background-color: #e0e1dd;
+            border: 1px solid #0d1b2a;
+            border-radius: 5px;
+            color: #0d1b2a; 
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #F8F8F2;
+            background-color: #F8F8F2;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            min-width: 500px;
+            background-color: #e0e1dd;
+        }
+        button[type="submit"] {
+            background-color: #415a77;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button[type="submit"]:hover {
+            background-color: #778da9;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- Logo with link to the top of the page -->
+    <a href="index.html" class="logo-container">
+        <div class="logo-img">
+            <img src="../Images/Icons and Logos/Logo_TTC.png" alt="The Tutoring Collective Logo">
+        </div>
+        <div class="logo-text">
+            <span class="logo-line">The Tutoring</span>
+            <center><span class="logo-line">Collective</span></center>
+        </div>
+    </a>
+
+    <!-- Navigation within header (ADD GIVING BACK SECTION IN THE FUTURE         <a href="giving-back.html">GIVING BACK</a>)-->
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="about.html">HOW WE TUTOR</a>
+        <a href="#tutors">OUR TUTORS</a>
+        <a href="subjects.html">SUBJECTS</a>
+        <a href="reviews.html">REVIEWS</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+</header>
+
+<!-- Example Section -->
+<div id="home" class="section-intro">
+    <div class="text-box">
+        <h1>Quality Remote Tutoring - Without the Agency Fees</h1>
+    </div>
+    <div class="image-container">
+        <img src="../Images/student_learning.jpg" alt="Your Image">
+    </div>
+</div>
+
+<!--Testing-->
+<div id="summary" class="section-blue">
+    <div class="absolute-image">
+        <img src="../Images/Icons and Logos/education.svg">
+    </div>
+    <div class="absolute-image-2">
+        <img src="../Images/Icons and Logos/approved.svg">
+    </div>
+    <div class="absolute-image-3">
+        <img src="../Images/Icons and Logos/badge.svg">
+    </div>
+    <div class="text-box-alt-subtitle-1">
+        <h1>Our Commitment</h1>
+    </div>
+    <div class="text-box-alt-subtitle-2">
+        <h1>How we do it</h1>
+    </div>
+    <div class="text-box-alt-subtitle-3">
+        <h1>Why Support TTC</h1>
+    </div>
+    <div class="text-box-commitment">
+        <h1>The Tutoring Collective was born with the aim to break down educational barriers and provide tailored quality tuition by making online tuition accessible and affordable for anyone. Our tutors help students of all ages improve their confidence and grades with personalized tuition at a fraction of what tutoring agencies cost without compromising quality. Furthermore, this also helps our tutors earn a fair wage for the work they do which is often overlooked with agencies.</h1>
+    </div>
+    <div class="text-box-process">
+        <h1>Our tutors are our most valuable assets due to the importance we place on the process of recruiting. All of our tutors therefore specialize in their respective subjects across multiple exam boards and across different levels. They are patient, kind, flexible and can adapt their teaching style, pace or schedule to your needs. In addition to this, all our tutors are exceptional under and post-graduate students and in most cases act as role models for students who perhaps are interested in pursuing those particular disciplines in the future.</h1>
+    </div>
+    <div class="text-box-unique">
+        <h1>We find the best tutor for your needs at a fair price and ensure the tutors are paid fairly. Our tutors are tried and tested and will make the learning experience an enjoyable one for you. We believe communication is crucial and so weekly progress will be reported to ensure the quality of tuition is the best.</h1>
+    </div>
+</div>
+<!-- Existing Section -->
+
+<div id="tutors" class="section-tutors">
+    <div class="text-box-tutors">
+        <h1>Meet Our Tutors</h1>
+    </div>
+    <!-- Tutor Image Grid -->
+    <div class="tutor-grid">
+        <!-- Tutor 1 -->
+        <div class="tutor-card" data-url="../Tutors/alvaro.html">
+            <img src="../Images/Tutors Pictures/Alvaro_pfp.jpg" alt="Alvaro">
+            <div class="tutor-info">
+                <p>Alvaro is a STEM focused tutor that specializes in Biology, Chemistry and Physics</p>
+                <p>For more info click on the Image</p>
+            </div>
+        </div>
+        <!-- Tutor 2 -->
+        <div class="tutor-card" data-url="../Tutors/rafa.html">
+            <img src="../Images/Tutors Pictures/Rafa_pfp.jpg" alt="Rafa">
+            <div class="tutor-info">
+                <p>Rafa is a STEM focused tutor that specializes in Maths, Further Maths and Statistics</p>
+                <p>For more info click on the Image</p>
+            </div>
+        </div>
+        <!-- Tutor 3 -->
+        <div class="tutor-card" data-url="../Tutors/louie.html">
+            <img src="../Images/Tutors Pictures/Louie_pfp.jpg" alt="Louie">
+            <div class="tutor-info">
+                <p>Louie is a Social Sciences focused tutor that specializes in Business, Psychology and Languages</p>
+                <p>For more info click on the Image</p>
+            </div>
+        </div>
+        <!-- Tutor 4 -->
+        <div class="tutor-card" data-url="../Tutors/sophia.html">
+            <img src="../Images/Tutors Pictures/Sophia_pfp.jpg" alt="Sophia">
+            <div class="tutor-info">
+                <p>Sophia is an Arts focused tutor that specializes in Art, English Literature and English Language</p>
+                <p>For more info click on the Image</p>
+            </div>
+        </div>
+        <!-- Tutor 5 -->
+        <div class="tutor-card" data-url="../Tutors/heather.html">
+            <img src="../Images/Tutors Pictures/Heather_pfp.jpg" alt="Heather">
+            <div class="tutor-info">
+                <p>Heather is a Linguistics focused tutor that specializes in Mandarin, Spanish and French</p>
+                <p>For more info click on the Image</p>
+            </div>
+        </div>
+        <!-- Add more tutors as needed -->
+    </div>
+</div>
+
+<div id="contact" class="section-contact">
+    <div class="text-box-contact-title">
+        <h1>Further Information</h1>
+    </div>
+    <div class="text-box-contact-text">
+        <h1>If you have any questions or need more information, please don't hesitate to reach out! We are here to help and support you every step of the way. Whether you're curious about our services, need assistance choosing the right tutoring plan, or want to discuss your child's unique needs, our team is happy to assist. Contact us today and let’s work together to ensure your child’s success!</h1>
+    </div>
+    <div class="contact-form-container">
+        <h2>Contact Us</h2>
+        <form action="https://formspree.io/f/mldrzwww" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="telephone">Telephone:</label>
+            <input type="text" id="telephone" name="telephone" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="10" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2024 The Tutor Collective. All rights reserved.</p>
+</footer>
+
+<script>
+    const sectionIds = ['#about', '#subjects', '#reviews', '#giving-back'];
+
+    document.querySelectorAll('nav a').forEach(function(link) {
+        if (sectionIds.includes(link.getAttribute('href'))) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent immediate navigation
+                const targetId = this.getAttribute('href'); // Get the target section's ID
+
+                // Add fade-out class to body
+                document.body.classList.add('fade-out');
+
+                // Wait for the fade-out transition to complete before navigating
+                setTimeout(function() {
+                    window.location.href = targetId;
+                }, 500); // Match the duration of the CSS transition
+            });
+        }
+    });
+
+    document.addEventListener('scroll', function() {
+        const curve = document.getElementById('curve');
+        const scrollPosition = window.scrollY; // Current scroll position
+        const windowHeight = window.innerHeight; // Height of the visible window
+
+        // Check if we have scrolled to at least halfway down the page
+        if (scrollPosition > windowHeight / 2) {
+            curve.classList.add('show'); // Add the class to make the curve appear
+        } else {
+            curve.classList.remove('show'); // Remove the class to hide the curve again
+        }
+    });
+
+    document.querySelectorAll('.tutor-card').forEach(function(card) {
+        card.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent immediate navigation
+            const targetUrl = this.getAttribute('data-url'); // Get the URL from data attribute
+
+            // Add fade-out class to body or main content wrapper
+            document.body.classList.add('fade-out');
+
+            // Wait for the fade-out transition to complete before navigating
+            setTimeout(function() {
+                window.location.href = targetUrl;
+            }, 500); // Match the duration of the CSS transition
+        });
+    });
+
+</script>
+
+</body>
+</html>

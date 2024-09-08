@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giving Back - The Tutor Collective</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Oswald', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8F8F2;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+        header {
+            background-color: #0d1b2a;
+            color: #e0e1dd;
+            padding: 20px 20px;
+            display: flex;
+            height: 120px;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #0d1b2a;
+        }
+        .logo-container {
+            height: 100px;
+            background-color:#0d1b2a;
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logo-container:hover {
+            transform: scale(1.1);
+        }
+        .logo-img {
+            margin-right: 15px;
+        }
+        .logo-img img {
+            width: 140px;
+            height: auto;
+        }
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #e0e1dd;
+        }
+        .logo-line {
+            display: block;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+        nav a {
+            margin: 0;
+            padding: 0 20px;
+            text-decoration: none;
+            color: #708090;
+            font-weight: 500;
+            font-size: 20px;
+            text-align: center;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s, transform 0.3s;
+            position: relative;
+        }
+        nav a:hover {
+            border-bottom: 2px solid #0F705A;
+            transform: scale(1.1);
+        }
+        nav a:not(:last-child)::after {
+            content: "|";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ccc;
+        }
+        .section {
+            padding: 60px;
+            background-color: #179477;
+            margin: 20px 0;
+            height: 2000px;
+            font-size: 18px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- Logo with link to the top of the page -->
+    <a href="index.html" class="logo-container">
+        <div class="logo-img">
+            <img src="../Images/Icons and Logos/Logo_TTC.png" alt="The Tutoring Collective Logo">
+        </div>
+        <div class="logo-text">
+            <span class="logo-line">The Tutoring</span>
+            <center><span class="logo-line">Collective</span></center>
+        </div>
+    </a>
+
+    <!-- Navigation within header -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">How we Tutor</a>
+        <a href="index.html#tutors">Our Tutors</a>
+        <a href="subjects.html">Subjects & Pricing</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="giving-back.html">Giving Back</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+</header>
+
+<div class="section">
+    <h2>Giving Back</h2>
+    <p>At The Tutor Collective, we believe in the power of education and giving back to our community. We are committed to supporting underprivileged students and providing them with the resources they need to succeed academically.</p>
+    <p>Our team regularly engages in volunteer tutoring sessions and collaborates with local organizations to ensure that every student, regardless of their background, has access to quality education. By choosing The Tutor Collective, you're not only investing in your own education but also helping others achieve their academic goals.</p>
+</div>
+
+<footer>
+    <p>&copy; 2024 The Tutor Collective. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
